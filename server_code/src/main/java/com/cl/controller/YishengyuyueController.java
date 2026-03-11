@@ -29,6 +29,7 @@ import com.cl.entity.view.YishengyuyueView;
 
 import com.cl.service.YishengyuyueService;
 import com.cl.service.TokenService;
+import com.cl.service.NotificationService;
 import com.cl.utils.PageUtils;
 import com.cl.utils.R;
 import com.cl.utils.MPUtil;
@@ -47,6 +48,9 @@ import com.cl.utils.CommonUtil;
 public class YishengyuyueController {
     @Autowired
     private YishengyuyueService yishengyuyueService;
+    
+    @Autowired
+    private NotificationService notificationService;
 
 
 
@@ -192,6 +196,12 @@ public class YishengyuyueController {
             list.add(yishengyuyue);
         }
         yishengyuyueService.updateBatchById(list);
+        
+        for(YishengyuyueEntity yishengyuyue : list) {
+            if("是".equals(sfsh)) {
+                notificationService.sendNotificationsOnAppointmentSuccess(yishengyuyue);
+            }
+        }
         return R.ok();
     }
 

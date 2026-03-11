@@ -103,6 +103,12 @@ public class JiuzhentongzhiEntity<T> implements Serializable {
 					
 	private String tongzhibeizhu;
 	
+	/**
+	 * 通知状态
+	 */
+					
+	private String zhuangtai;
+
 
 	@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
 	@DateTimeFormat
@@ -216,6 +222,18 @@ public class JiuzhentongzhiEntity<T> implements Serializable {
 	 */
 	public String getTongzhibeizhu() {
 		return tongzhibeizhu;
+	}
+	/**
+	 * 设置：通知状态
+	 */
+	public void setZhuangtai(String zhuangtai) {
+		this.zhuangtai = zhuangtai;
+	}
+	/**
+	 * 获取：通知状态
+	 */
+	public String getZhuangtai() {
+		return zhuangtai;
 	}
 
 }
